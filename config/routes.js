@@ -19,13 +19,24 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-  '/venta' : {view: 'pages/venta'},
-  '/login' : {view: 'pages/login'},
-  '/recoverpassword' : {view: 'pages/recover'},
-  '/usuarios': { view: 'pages/usuarios' },
-  '/productos': { view: 'pages/productos' },
+  'GET /': { view: 'pages/homepage' },
+  'GET /venta' : {view: 'pages/venta'},
+  'GET /login' : {view: 'pages/login'},
+  'GET /recoverpassword' : {view: 'pages/recover'},
   'GET /usuarios' : {action: 'usuarios/get'},
+  'GET /usuarios/:id' : {action: 'usuarios/getUsuario'},
+  'GET /nuevo-usuario' : {action: 'usuarios/getNuevo'},
+  'GET /productos': { action: 'articulos/get'},
+  'GET /productos/:id': { action: 'articulos/getProducto'},
+  'GET /nuevo-producto': { action: 'articulos/getNuevo'},
+
+  'POST /v1/nuevo-usuario': { action: 'usuarios/post'},
+  'POST /v1/actualizar-usuario/:id': { action: 'usuarios/actualizar'},
+  'POST /v1/eliminar-usuario/:id': { action: 'usuarios/eliminar'},
+  'POST /v1/nuevo-producto': { action: 'articulos/post'},
+  'POST /v1/actualizar-producto/:id': { action: 'articulos/actualizar'},
+  'POST /v1/eliminar-producto/:id': { action: 'articulos/eliminar'},
+  
 
 
   /***************************************************************************

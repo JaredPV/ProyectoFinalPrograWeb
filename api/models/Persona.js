@@ -6,14 +6,16 @@
  */
 
 module.exports = {
-
+  tableName : 'persona',
   attributes: {
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
-
+      id: { type: 'number', columnName: 'idPersona', autoIncrement: true },
+      nombre: { type: 'string'},
+      correo: { type: 'string'},
+      activo: { type: 'boolean'},
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

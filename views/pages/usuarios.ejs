@@ -1,13 +1,12 @@
 <style>
     .display-4 {margin-top: 1cm;}
-    
     .table {margin-left: auto; margin-right: auto; max-width: 35cm; margin-top: 1cm; }
-    .container-col-5de {float: right;}
+    .container-col-5de {float: right;}    
 </style>
 <center><h1 class="display-4">REGISTRO DE USUARIOS</h1></center>
 <div class="container-sm">
 <div class="container-col-5de">
-    <form action="/buscar" method="GET">
+    <form action="/usuarios" method="GET">
         <h5 class="tit">BÚSQUEDA AVANZADA:<br>Ingresa usuario o Id de Usuario</h5>
         <div class="input-group">
             <input type="text" class="col rounded" aria-label="Search" id="search" name="search">
@@ -27,7 +26,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr> </tr>
+        <% users_data.forEach(function(usuario){ %>
+            <tr>
+                <td><%=usuario.idUsuario%></td>
+                <td><%=usuario.usuario%></td> 
+                <td><%=usuario.psw%></td>
+                <%if(usuario.activo){%><td>Activo</td><%}%>
+                <%if(!usuario.activo){%><td>Inactivo</td><%}%>
+                <%if(usuario.tipoUsuario){%><td>Administrador</td><%}%>
+                <%if(!usuario.tipoUsuario){%><td>Vendedor</td><%}%>
+                <td><button 
+                    type="submit" 
+                    class="btn btn-warning btn-sm"
+                    onclick="window.location.href = '/usuarios/<%=usuario.idUsuario%>'" 
+                >Modificar</button></td>      
+            </tr>
+        <% }) %>
     </tbody>
 </table>
 </div>

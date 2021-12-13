@@ -6,7 +6,7 @@
 <center><h1 class="display-4">REGISTRO DE PRODUCTOS</h1></center>
 <div class="container-sm">
 <div class="container-col-5de">
-    <form action="/buscar" method="GET">
+    <form action="/productos" method="GET">
         <h5 class="tit">BÚSQUEDA AVANZADA:<br>Ingresa Nombre o Id de Producto</h5>
         <div class="input-group">
             <input type="text" class="col rounded" aria-label="Search" id="search" name="search">
@@ -27,7 +27,21 @@
         </tr>
     </thead>
     <tbody>
-        <tr> </tr>
+        <% products_data.forEach(function(product){ %>
+            <tr>
+                <td><%=product.idArticulos%></td>
+                <td><%=product.nombre%></td> 
+                <td><%=product.descripcion%></td>
+                <td><%=product.cantidad%></td>
+                <td>$  <%=product.precioVenta%></td>
+                <td>$  <%=product.precioCompra%></td>
+                <td><button 
+                    type="submit" 
+                    class="btn btn-warning btn-sm"
+                    onclick="window.location.href = '/productos/<%=product.idArticulos%>'" 
+                >Modificar</button></td>      
+            </tr>
+        <% }) %>
     </tbody>
 </table>
 </div>
