@@ -1,0 +1,33 @@
+<style>
+    .display-4 {margin-top: 1cm;}
+    
+    .table {margin-left: auto; margin-right: auto; max-width: 35cm; margin-top: 1cm; }
+    .container-col-5de {float: right;}
+</style>
+<center><h1 class="display-4">REGISTRO DE USUARIOS</h1></center>
+<div class="container-sm">
+<div class="container-col-5de">
+    <form action="/buscar" method="GET">
+        <h5 class="tit">BÚSQUEDA AVANZADA:<br>Ingresa usuario o Id de Usuario</h5>
+        <div class="input-group">
+            <input type="text" class="col rounded" aria-label="Search" id="search" name="search">
+            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="bi bi-search"></i></button>
+        </div>
+    </form>
+</div>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id Usuario</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Tipo de Usuario</th>
+            <th class="col-sm-2" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr> </tr>
+    </tbody>
+</table>
+</div>

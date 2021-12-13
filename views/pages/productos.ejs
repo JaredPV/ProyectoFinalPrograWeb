@@ -1,0 +1,33 @@
+<style>
+    .display-4 {margin-top: 1cm;}
+    .table {margin-left: auto; margin-right: auto; max-width: 35cm; margin-top: 1cm; }
+    .container-col-5de {float: right;}
+</style>
+<center><h1 class="display-4">REGISTRO DE PRODUCTOS</h1></center>
+<div class="container-sm">
+<div class="container-col-5de">
+    <form action="/buscar" method="GET">
+        <h5 class="tit">BÚSQUEDA AVANZADA:<br>Ingresa Nombre o Id de Producto</h5>
+        <div class="input-group">
+            <input type="text" class="col rounded" aria-label="Search" id="search" name="search">
+            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="bi bi-search"></i></button>
+        </div>
+    </form>
+</div>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id Producto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio Venta</th>
+            <th scope="col">Precio Compra</th>
+            <th class="col-sm-2" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr> </tr>
+    </tbody>
+</table>
+</div>
