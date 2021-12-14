@@ -19,10 +19,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /': { view: 'pages/homepage' },
+  'GET /': { action: 'articulos/get'},
   'GET /venta' : {view: 'pages/venta'},
-  'GET /login' : {view: 'pages/login'},
-  'GET /recoverpassword' : {view: 'pages/recover'},
+  'GET /login' : {action: 'login/getLogin'},
+  'GET /logout' : {action: 'login/getLogout'},
+  'GET /recover' : {action: 'login/getRecover'},
   'GET /usuarios' : {action: 'usuarios/get'},
   'GET /usuarios/:id' : {action: 'usuarios/getUsuario'},
   'GET /nuevo-usuario' : {action: 'usuarios/getNuevo'},
@@ -36,6 +37,8 @@ module.exports.routes = {
   'POST /v1/nuevo-producto': { action: 'articulos/post'},
   'POST /v1/actualizar-producto/:id': { action: 'articulos/actualizar'},
   'POST /v1/eliminar-producto/:id': { action: 'articulos/eliminar'},
+  'POST /v1/login': {action: 'login/postLogin'},
+  'POST /v1/recover': {action: 'login/postRecover'},
   
 
 

@@ -60,14 +60,37 @@ new Vue({
                 console.error(error);
             });
 		},
-		actualizarEmpleado: function(id){
-			fetch('/v1/actualizar-empleado/' + id, {
+		actualizarProducto: function(id){
+			if(this.formulario.nombre == ""){
+				return Swal.fire('Error', 'Es necesario colocar un nombre','error');
+            };
+            if(this.formulario.descripcion == ""){
+				return Swal.fire('Error', 'Es necesario colocar una descripción','error');
+            };
+			if(this.formulario.precioCompra == ""){
+				return Swal.fire('Error', 'Es necesario colocar un precio de compra','error');
+            };
+            if(this.formulario.precioVenta == ""){
+				return Swal.fire('Error', 'Es necesario colocar un precio de venta','error');
+            };
+            if(this.formulario.fecha == ""){
+				return Swal.fire('Error', 'Es necesario colocar una fecha','error');
+            };
+            if(this.formulario.activo == "Seleccione una opción"){
+				return Swal.fire('Error', 'Es necesario colocar un estatus','error');
+            };
+            if(this.formulario.cantidad == ""){
+				return Swal.fire('Error', 'Es necesario colocar una cantidad','error');
+            };
+			document.getElementById("loading").style.display = "block";
+			fetch('/v1/actualizar-producto/' + id, {
                 method: 'POST',
                 body: JSON.stringify(this.formulario),
                 headers:{
                 	'Content-Type': 'application/json'
                 }
             }).then(() => {
+            	document.getElementById("loading").style.display = "none";
             	this.alertaEdicion(); 
 			}).catch(function (error){
 				Swal.fire("Error","Error al actualizar el registro del producto: " + error,'error');
@@ -75,7 +98,7 @@ new Vue({
             });
 			
 		},
-		eliminarEmpleado: function(id){
+		eliminarProducto: function(id){
 			Swal.fire({
 			  title: 'Cuidado, eliminando registro del producto...',
 			  text: "El registro se eliminara definitivamente",
@@ -86,7 +109,7 @@ new Vue({
 			  confirmButtonText: 'Eliminar'
 			}).then((result) => {
 				if (result.isConfirmed) {
-					fetch('/v1/eliminar-empleado/' + id, {
+					fetch('/v1/eliminar-producto/' + id, {
 	                method: 'POST',
 	                body: JSON.stringify(this.formulario),
 	                headers:{

@@ -58,6 +58,25 @@ new Vue({
             });
 		},
 		actualizarUsuario: function(id){
+			if(this.formulario.nombre == ""){
+				return Swal.fire('Error', 'Es necesario colocar un nombre','error');
+            };
+            if(this.formulario.correo == ""){
+				return Swal.fire('Error', 'Es necesario colocar un correo electrónico','error');
+            };
+			if(this.formulario.usuario == ""){
+				return Swal.fire('Error', 'Es necesario colocar un usuario','error');
+            };
+            if(this.formulario.psw == ""){
+				return Swal.fire('Error', 'Es necesario colocar una contraseña','error');
+            };
+            if(this.formulario.tipoUsuario == "Seleccione una opción"){
+				return Swal.fire('Error', 'Es necesario colocar el tipo de usuario','error');
+            };
+            if(this.formulario.activo == "Seleccione una opción"){
+				return Swal.fire('Error', 'Es necesario colocar un estatus','error');
+            };
+			document.getElementById("loading").style.display = "block";
 			fetch('/v1/actualizar-usuario/' + id, {
                 method: 'POST',
                 body: JSON.stringify(this.formulario),
@@ -65,6 +84,7 @@ new Vue({
                 	'Content-Type': 'application/json'
                 }
             }).then(() => {
+            	document.getElementById("loading").style.display = "none";
             	this.alertaEdicion(); 
 			}).catch(function (error){
 				Swal.fire("Error","Error al actualizar el registro del usuario: " + error,'error');

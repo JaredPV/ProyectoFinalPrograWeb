@@ -20,22 +20,32 @@
 				<center>
 					<h4>Restablcer Contraseña</h4>
 				</center>
-				<form method="post" action="">
+				<form method="post" action="/v1/recover">
 					<div class="form-group">
-						<label for="email" class="form-label">Correo Electrónico</label>
-						<input type="email" class="form-control" id="email" name="email">
+						<label for="correo" class="form-label">Correo Electrónico</label>
+						<input type="email" class="form-control" id="correo" name="correo">
 					</div>
 					<div class="mb-3">
-						<label for="password" class="form-label">Contraseña nueva</label>
-						<input type="password" class="form-control" id="password" name="password">
+						<label for="psw" class="form-label">Contraseña nueva</label>
+						<input type="password" class="form-control" id="psw" name="psw" onchange='check_pass();'>
 					</div>
                     <div class="mb-3">
 						<label for="confirmation" class="form-label">Confirmar contraseña nueva</label>
-						<input type="password" class="form-control" id="confirmation" name="confirmation">
+						<input type="password" class="form-control" id="confirmation" name="confirmation" onchange='check_pass();'>
 					</div>
-                    <center><button type="submit" class="btn btn-success">Restablecer</button></center>
+                    <center><button id ='submit' disabled = true type="submit" class="btn btn-success">Restablecer</button></center>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	function check_pass() {
+    if (document.getElementById('psw').value ==
+            document.getElementById('confirmation').value) {
+        document.getElementById('submit').disabled = false;
+    } else {
+        document.getElementById('submit').disabled = true;
+    }
+}
+</script>

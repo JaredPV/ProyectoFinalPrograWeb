@@ -20,16 +20,16 @@
 				<center>
 					<h4>Iniciar Sesión</h4>
 				</center>
-				<form method="post" action="">
+				<form method="post" action="/v1/login">
 					<div class="form-group">
-						<label for="email" class="form-label">Nombre de Usuario</label>
-						<input type="email" class="form-control" id="email" name="email">
+						<label for="usuario" class="form-label">Nombre de Usuario</label>
+						<input type="text" class="form-control" id="usuario" name="usuario">
 					</div>
 					<div class="mb-3">
-						<label for="password" class="form-label">Contraseña</label>
-						<input type="password" class="form-control" id="password" name="password">
+						<label for="psw" class="form-label">Contraseña</label>
+						<input type="password" class="form-control" id="psw" name="psw">
 					</div>
-                    <center><a href="/recoverpassword">Olvidé mi contraseña</a><br>
+                    <center><a href="/recover">Olvidé mi contraseña</a><br>
 					<button type="submit" class="btn btn-success">Iniciar Sesión</button></center>
 				</form>
 			</div>

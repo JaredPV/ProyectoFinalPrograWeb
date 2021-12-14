@@ -27,20 +27,22 @@
     </thead>
     <tbody>
         <% users_data.forEach(function(usuario){ %>
-            <tr>
-                <td><%=usuario.idUsuario%></td>
-                <td><%=usuario.usuario%></td> 
-                <td><%=usuario.psw%></td>
-                <%if(usuario.activo){%><td>Activo</td><%}%>
-                <%if(!usuario.activo){%><td>Inactivo</td><%}%>
-                <%if(usuario.tipoUsuario){%><td>Administrador</td><%}%>
-                <%if(!usuario.tipoUsuario){%><td>Vendedor</td><%}%>
-                <td><button 
-                    type="submit" 
-                    class="btn btn-warning btn-sm"
-                    onclick="window.location.href = '/usuarios/<%=usuario.idUsuario%>'" 
-                >Modificar</button></td>      
-            </tr>
+            <% if (usuario.usuario.includes(search)||usuario.idUsuario==search){%>
+                <tr>
+                    <td><%=usuario.idUsuario%></td>
+                    <td><%=usuario.usuario%></td> 
+                    <td><%=usuario.psw%></td>
+                    <%if(usuario.activo){%><td>Activo</td><%}%>
+                    <%if(!usuario.activo){%><td>Inactivo</td><%}%>
+                    <%if(usuario.tipoUsuario){%><td>Administrador</td><%}%>
+                    <%if(!usuario.tipoUsuario){%><td>Vendedor</td><%}%>
+                    <td><button 
+                        type="submit" 
+                        class="btn btn-warning btn-sm"
+                        onclick="window.location.href = '/usuarios/<%=usuario.idUsuario%>'" 
+                    >Modificar</button></td>      
+                </tr>
+            <% } %>    
         <% }) %>
     </tbody>
 </table>

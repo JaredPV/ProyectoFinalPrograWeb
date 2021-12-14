@@ -23,24 +23,30 @@
             <th scope="col">Cantidad</th>
             <th scope="col">Precio Venta</th>
             <th scope="col">Precio Compra</th>
-            <th class="col-sm-2" scope="col"></th>
+            <% if(admin) { %>
+                <th class="col-sm-2" scope="col"></th>
+            <% } %>
         </tr>
     </thead>
     <tbody>
         <% products_data.forEach(function(product){ %>
-            <tr>
-                <td><%=product.idArticulos%></td>
-                <td><%=product.nombre%></td> 
-                <td><%=product.descripcion%></td>
-                <td><%=product.cantidad%></td>
-                <td>$  <%=product.precioVenta%></td>
-                <td>$  <%=product.precioCompra%></td>
-                <td><button 
-                    type="submit" 
-                    class="btn btn-warning btn-sm"
-                    onclick="window.location.href = '/productos/<%=product.idArticulos%>'" 
-                >Modificar</button></td>      
-            </tr>
+            <% if (product.nombre.includes(search)||product.idArticulos==search){%>
+                <tr>
+                    <td><%=product.idArticulos%></td>
+                    <td><%=product.nombre%></td> 
+                    <td><%=product.descripcion%></td>
+                    <td><%=product.cantidad%></td>
+                    <td>$  <%=product.precioVenta%></td>
+                    <td>$  <%=product.precioCompra%></td>
+                    <% if(admin) { %>
+                        <td><button 
+                            type="submit" 
+                            class="btn btn-warning btn-sm"
+                            onclick="window.location.href = '/productos/<%=product.idArticulos%>'" 
+                        >Modificar</button></td>
+                    <% } %>      
+                </tr>
+            <% } %> 
         <% }) %>
     </tbody>
 </table>

@@ -9,6 +9,21 @@
  */
 
 module.exports.policies = {
+  "ArticulosController":{
+    "*": "Usuario"
+  },
+  "InventarioController":{
+    "*": "Usuario"
+  },
+  "PersonaController":{
+    "*": "Usuario"
+  },
+  "UsuariosController":{
+    "*": "Usuario"
+  },
+  "VentaController":{
+    "*": "Usuario"
+  },
 
   /***************************************************************************
   *                                                                          *

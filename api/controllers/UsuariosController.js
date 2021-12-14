@@ -10,17 +10,26 @@
 module.exports = {
     
     get: async(request, response) => {
+        var search="";
         const query = "SELECT * FROM usuarios";
         var select = await Usuarios.getDatastore().sendNativeQuery(query);
         select = JSON.parse(JSON.stringify(select.rows));
+        if(request.query.search){
+            if(isNaN(request.query.search)){
+                search =(request.query.search).toLowerCase();
+            }else search = request.query.search;
+        }
         return response.view('pages/usuarios', {
             layout: 'layouts/layout',
-            users_data: select
+            users_data: select,
+            search : search,
+            admin : response.data_user.tipoUsuario
         });      
     },
     getNuevo: async(request, response) => {
         return response.view('pages/nuevo-usuario', {
-            layout: 'layouts/layout'
+            layout: 'layouts/layout',
+            admin : response.data_user.tipoUsuario
         })
     },
     getUsuario: async(request, response) => {
@@ -34,9 +43,11 @@ module.exports = {
         return response.view('pages/editar-usuario', {
             layout: 'layouts/layout',
             usuario : selectUsuario,
-            persona : selectPersona
+            persona : selectPersona,
+            admin : response.data_user.tipoUsuario
         });
     },
+    
     post : async(request, response) => {
         var columnas="(nombre, correo, activo)";
         const body = request.body
@@ -84,7 +95,8 @@ module.exports = {
             "DELETE FROM persona WHERE idPersona="+user.idPersona
         );
         return response.send({success: 'ok'})
-    }
+    },
+    
 
 };
 

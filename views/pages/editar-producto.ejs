@@ -52,11 +52,11 @@
         <div class="col-6 col-sm-3">
             <button 
                 class="btn btn-primary" 
-                v-on:click= "actualizarProducto('')"
+                v-on:click= "actualizarProducto('<%=articulo.idArticulos%>')"
             >Editar Producto</button>
             <button 
                 class="btn btn-danger" 
-                v-on:click= "eliminarProducto('')"
+                v-on:click= "eliminarProducto('<%=articulo.idArticulos%>')"
             >Eliminar Producto</button>
         </div>
 
@@ -65,13 +65,13 @@
 <script type="text/javascript">
 	
 	var data_formulario = {
-		nombre: "",
-		descripcion: "",
-		precioCompra: "",
-		precioVenta: "",
-		fecha: "",
-		activo: "Seleccione una opción",
-        cantidad: ""
+		nombre: "<%=articulo.nombre%>",
+		descripcion: "<%=articulo.descripcion%>",
+		precioCompra: "<%=articulo.precioCompra%>",
+		precioVenta: "<%=articulo.precioVenta%>",
+		fecha: "<%=fecha%>",
+		activo: "<%=articulo.activo%>",
+        cantidad: "<%=inventario.cantidad%>"
 	};
 </script>
 <script src="/js/formularioProducto.js" type="text/javascript" charset="utf-8"></script>
